@@ -1,0 +1,76 @@
+{
+  "name": "evm-bridge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:timelock": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/timelockTest.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:accessControl": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/accessControlTest.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:reentrancyGuard": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/reentrancyGuardTest.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:parentLayer": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/parentLayerTest.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:parentMessage": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/parentMessage.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:erc20L1": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/erc20L1.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:erc721L1": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/erc721L1.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:erc1155L1": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/erc1155L1.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:erc1155L2": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/erc1155L2.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "test:childMessage": "source .test-eth-mainnet.env && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/childMessage.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "deployParentLayer:sepolia": "source .sepolia.env && npx hardhat run scripts/deployParentLayer.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "deployChildLayer:sepolia": "source .sepolia.env && npx hardhat run scripts/deployChildLayer.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "deployChildLayer:localhost": "source .localhost.env && npx hardhat run scripts/deployChildLayer.js --network localhost && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "parentClient:sepolia": "source .sepolia.env && npx hardhat run scripts/parentClient.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "childClient:localhost": "source .localhost.env && npx hardhat run scripts/childClient.js --network localhost && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "upgradeFacet:reddio": "source .reddio.env && npx hardhat run scripts/upgradeFacet.js --network reddio && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "upgradeFacet:sepolia": "source .sepolia.env && npx hardhat run scripts/upgradeFacet.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "upgradeFacet:staging": "source .staging.env && npx hardhat run scripts/upgradeFacet.js --network prod && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "upgradeFacet:prod": "source .prod.env && npx hardhat run scripts/upgradeFacet.js --network prod && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "upgradeFacet:sepolia-ledger": "source .sepolia.env && npx hardhat run scripts/upgradeFacet.js --network sepolia_ledger && unset RPC_PROVIDER",
+    "upgradeFacet:prod-ledger": "source .prod.env && npx hardhat run scripts/upgradeFacet.js --network prod_ledger && unset RPC_PROVIDER",
+    "deployReentrancyGuard:reddio": "source .reddio.env && npx hardhat run scripts/deployReentrancyGuard.js --network reddio && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "deployAccessControl:sepolia": "source .sepolia.env && npx hardhat run scripts/deployAccessControl.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "deployTimelockFacet:sepolia": "source .sepolia.env && npx hardhat run scripts/deployTimelockFacet.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY",
+    "addNewFacet:sepolia": "source .sepolia.env && npx hardhat run scripts/addNewFacet.js --network sepolia && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY"
+  
+    ,"test:localTest": "source .test.js && TEST_BLOCK_NUMBER=19919559 && npx hardhat test test/childMessage.js && unset ADMIN_ADMIN_PRIVATE_KEY && unset RPC_PROVIDER unset USER_PRIVATE_KEY"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reddio-com/evm-bridge.git"
+  },
+  "author": "Mad Wiki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reddio-com/evm-bridge/issues"
+  },
+  "homepage": "https://github.com/reddio-com/evm-bridge#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ledger": "^1.0.3",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "axios": "^1.7.2",
+    "chai": "^4.3.4",
+    "ethereumjs-util": "^7.1.5",
+    "hardhat": "^2.22.19",
+    "inquirer": "^9.2.23",
+    "prettier": "^3.2.5",
+    "prettier-plugin-solidity": "^1.3.1",
+    "readline": "^1.3.0"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-ignition": "^0.15.7",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@nomicfoundation/ignition-core": "^0.15.7",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.0.0",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solidity-coverage": "^0.8.1",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.3.0",
+    "typescript": ">=4.5.0"
+  }
+}
